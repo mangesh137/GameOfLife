@@ -2,7 +2,7 @@ package com.swiggy;
 
 public class GameOfLife {
 
-    public static void drawGrid(int[][] board, int row, int column) {
+    public static void drawBoard(int[][] board, int row, int column) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 System.out.print(" " + board[i][j]);
@@ -33,7 +33,7 @@ public class GameOfLife {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if ((r + i >= 0 && r + i < rows) && (c + j >= 0 && c + j < columns)) {
-                    aliveNeighbours += board[r + i][c + j];
+                        aliveNeighbours += board[r + i][c + j];
                 }
             }
         }
@@ -84,9 +84,9 @@ public class GameOfLife {
         };
         int row = 5 , column = 4;
         System.out.println("-------------Initial------------");
-        drawGrid(board, row, column);
+        drawBoard(board, row, column);
         System.out.println("-------------Next Generation------------");
-        drawGrid(nextGeneration(board, row, column), row, column);
+        drawBoard(nextGeneration(board, row, column), row, column);
 
     }
 }
