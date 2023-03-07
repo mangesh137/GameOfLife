@@ -1,8 +1,8 @@
-package com.swiggy;
+package com.swiggy.helper;
 
-public class GameOfLife {
+public class GameOfLifeHelper {
 
-    public static int[][] generateInitialBoard(int row, int column) {
+    public int[][] generateInitialBoard(int row, int column) {
         int[][] board = new int[row][column];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -13,7 +13,7 @@ public class GameOfLife {
         return board;
     }
 
-    public static void drawBoard(int[][] board, int row, int column) {
+    public void drawBoard(int[][] board, int row, int column) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 System.out.print(" " + board[i][j]);
@@ -22,7 +22,7 @@ public class GameOfLife {
         }
     }
 
-    public static int[][] nextGeneration(int board[][], int rows, int columns) {
+    public int[][] nextGeneration(int board[][], int rows, int columns) {
         int nextGenerationBoard[][] = new int[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -39,7 +39,7 @@ public class GameOfLife {
         return nextGenerationBoard;
     }
 
-    public static int getAliveNeighboursCount(int board[][], int rows, int columns, int r, int c) {
+    public int getAliveNeighboursCount(int board[][], int rows, int columns, int r, int c) {
         int aliveNeighbours = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
@@ -50,20 +50,5 @@ public class GameOfLife {
         }
         aliveNeighbours -= board[r][c];
         return aliveNeighbours;
-    }
-
-    public static void main(String[] args) {
-
-        int row = 5, column = 5, iteration = 3;
-        int[][] board = generateInitialBoard(row, column);
-
-        System.out.println("-------------Initial------------");
-        drawBoard(board, row, column);
-
-        for (int i = 0; i < iteration; i++) {
-            System.out.println("-------------Next Generation------------");
-            board = nextGeneration(board, row, column);
-            drawBoard(board, row, column);
-        }
     }
 }
