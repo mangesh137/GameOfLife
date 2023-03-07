@@ -54,13 +54,13 @@ public class GameOfLife {
 
     public static void main(String[] args) {
 
-        int row = 5, column = 5, interation = 3;
+        int row = 5, column = 5, iteration = 3;
         int[][] board = generateInitialBoard(row, column);
 
         System.out.println("-------------Initial------------");
         drawBoard(board, row, column);
 
-        for (int i = 0; i < interation; i++) {
+        for (int i = 0; i < iteration; i++) {
             System.out.println("-------------Next Generation------------");
             board = nextGeneration(board, row, column);
             drawBoard(board, row, column);
