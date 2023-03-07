@@ -2,6 +2,17 @@ package com.swiggy;
 
 public class GameOfLife {
 
+    public static int[][] generateInitialBoard(int row, int column) {
+        int[][] board = new int[row][column];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                board[i][j] = (int) Math.round(Math.random());
+            }
+            System.out.println();
+        }
+        return board;
+    }
+
     public static void drawBoard(int[][] board, int row, int column) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -42,26 +53,17 @@ public class GameOfLife {
     }
 
     public static void main(String[] args) {
-        /*int[][] board = {
-                {1, 0, 1, 1},
-                {1, 1, 0, 0},
-                {1, 1, 0, 1},
-                {0, 1, 1, 0},
-                {0, 0, 0, 0}
-        };
-        int row = 5 , column = 4;*/
 
-        int[][] board = {
-                {0, 1, 0},
-                {0, 0, 1},
-                {1, 1, 1},
-                {0, 0, 0}
-        };
-        int row = 4, column = 3;
+        int row = 5, column = 5, interation = 3;
+        int[][] board = generateInitialBoard(row, column);
+
         System.out.println("-------------Initial------------");
         drawBoard(board, row, column);
-        System.out.println("-------------Next Generation------------");
-        drawBoard(nextGeneration(board, row, column), row, column);
 
+        for (int i = 0; i < interation; i++) {
+            System.out.println("-------------Next Generation------------");
+            board = nextGeneration(board, row, column);
+            drawBoard(board, row, column);
+        }
     }
 }
